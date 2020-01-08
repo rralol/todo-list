@@ -1,18 +1,18 @@
-const projectContainer = () => {
+const projectContainer = (() => {
     const lists = [];
 
-    const addList = (list) => {lists.push(list)};
-    const removeList = (index) => {lists.splice(index, 1)};
+    const addList = (list) => {lists.push(listFactory(list));};
+    const removeList = (index) => {lists.splice(index, 1);};
 
-    return {addList, removeList};
-};
+    return {lists, addList, removeList};
+})();
 
 const listFactory = (name) => {
-    const name = name;
+    let title = name;
     const items = [];
     
-    const getName = () => {return this.name};
-    const setName = (name) => {this.name = name};
+    const getName = () => {return title};
+    const setName = (name) => {title = name};
     const addItem = (item) => {items.push(item)};
     const removeItem = (index) => {items.splice(index, 1)};
 
@@ -20,10 +20,10 @@ const listFactory = (name) => {
 };
 
 const itemFactory = (title, desc, dueDate, prio) => {
-    const title = title;
-    const desc = desc;
-    const dueDate = dueDate;
-    const prio = prio;
+    this.title = title;
+    this.desc = desc;
+    this.dueDate = dueDate;
+    this.prio = prio;
 
     const getTitle = () => {return this.title};
     const setTitle = (title) => {this.title = title};

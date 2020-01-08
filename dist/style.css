@@ -1,0 +1,76 @@
+.topcontainer {
+    display: flex;
+    height: 30px;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.cancelbutton {
+    font-size: 20px;
+    font-weight: 900;
+    padding-right: 10px;
+}
+
+.textinput {
+    width: 150px;
+    height: 20px;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+button {
+    border: none;
+}
+
+button:hover {
+    opacity: 0.5;
+}
+
+#listmain {
+    width: 260px;
+    padding: 10px;
+    border: 0.05em solid gray;
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.entrycontent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: inherit;
+}
+
+.removebutton {
+    color: red;
+}
+
+.listname {
+    float: left;
+}
+
+.editbutton {
+    align-content: flex-end;
+}
+
+.listcontainer {
+    width: inherit;
+    
+}
+
+.entrycontainer {
+    display: flex;
+    height: 25px;
+    width: inherit;
+    align-items: center;
+    
+}
+
+.entrycontainer:hover {
+    color: gray;
+}
+
+.entrycontainer.selected {
+    color: rgba(255, 0, 0, 0.801);
+}
