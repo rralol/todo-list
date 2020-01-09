@@ -106,6 +106,7 @@ const listcontainer = (() => {
             projectContainer.removeList(container.parentNode.getAttribute('data-id'));
             lastSelected = null;
             displayListContent();
+            maincontainer.parentNode.lastChild.style.display = "none";
         });
         
         bundle.appendChild(editName);
@@ -126,6 +127,15 @@ const listcontainer = (() => {
 
         name.textContent = text;
         name.className = "listname";
+        name.addEventListener('click', function() {
+            const selectedExists = document.querySelector(".selected");
+            if (selectedExists) {
+                selectedExists.classList.remove("selected");
+            }
+            listcontent.updateSelected(entry.getAttribute("data-id"));
+            lastSelected = entry.getAttribute("data-id");
+            entry.classList.add("selected");
+        });
 
         editButton.textContent = "Edit"
         editButton.className = "editbutton"
@@ -135,15 +145,6 @@ const listcontainer = (() => {
         
         entry.setAttribute("data-id", key);
         entry.className = "entrycontainer";
-        entry.addEventListener('click', function() {
-            const selectedExists = document.querySelector(".selected");
-            if (selectedExists) {
-                selectedExists.classList.remove("selected");
-            }
-            listcontent.updateSelected(entry.getAttribute("data-id"));
-            lastSelected = entry.getAttribute("data-id");
-            entry.classList.add("selected");
-        });
 
         content.appendChild(name);
         content.appendChild(editButton);

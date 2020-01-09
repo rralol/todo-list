@@ -9,6 +9,7 @@ const listcontent = (() => {
     const create = () => {
         displayNewButton();
         maincontainer.id = "contentsmain";
+        maincontainer.style.display = "none";
         itemcontainer.id = "itemcontainer";
         maincontainer.appendChild(itemcontainer);
         return maincontainer;
@@ -96,6 +97,7 @@ const listcontent = (() => {
 
     const updateSelected = (index) => {
         clearItemContainer();
+        maincontainer.style.display = "block";
         if (projectContainer.getList(index))
         {
             selectedlist = index;
