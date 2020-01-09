@@ -1,8 +1,54 @@
+#content {
+    display: grid;
+    align-items: start;
+    align-content: center;
+    grid-template-columns: auto auto;
+    grid-column-gap: 30px;
+    justify-content: center;
+}
+
+#contentsmain {
+    width: 400px;
+    padding: 10px;
+    border: 0.05em gray;
+    border-radius: 5px;
+    background-color: rgba(255, 172, 64, 0.192);
+    box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.5);
+}
+
+.donebutton {
+    padding-left: 10px;
+}
+
+.itemdescinput{
+    height: 20px;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid gray;
+}
+
+.topcontentcontainer {
+    display: flex;
+    padding: 10px;
+    height: 55px;
+    border-bottom: 1px solid black;
+}
+
+.datefield {
+    height: 20px;
+    background-color: inherit;
+    border: none;
+    padding-left: 5px;
+}
+
 .topcontainer {
     display: flex;
     height: 30px;
     align-content: center;
     justify-content: space-between;
+    padding-bottom: 10px;
+    padding-top: 5px;
+    border-bottom: 1px solid black;
 }
 
 .cancelbutton {
@@ -12,8 +58,9 @@
 }
 
 .textinput {
-    width: 150px;
-    height: 20px;
+    width: 160px;
+    height: 30px;
+    font-size: 20px;
     background-color: inherit;
     border: none;
     border-bottom: 1px solid gray;
@@ -21,6 +68,7 @@
 
 button {
     border: none;
+    background-color: inherit;
 }
 
 button:hover {
@@ -28,11 +76,12 @@ button:hover {
 }
 
 #listmain {
-    width: 260px;
+    width: 280px;
     padding: 10px;
-    border: 0.05em solid gray;
+    border: 0.05em gray;
     border-radius: 5px;
     background-color: rgba(128, 128, 128, 0.1);
+    box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.5);
 }
 
 .entrycontent {
@@ -40,10 +89,12 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     width: inherit;
+    color: rgb(65, 65, 65);
 }
 
 .removebutton {
     color: red;
+    font-size: 25px;
 }
 
 .listname {
@@ -59,11 +110,27 @@ button:hover {
     
 }
 
+.itemcontainer {
+    width: inherit;
+    
+}
+
+.itementrycontainer {
+    display: flex;
+    width: inherit;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+}
+
 .entrycontainer {
     display: flex;
     height: 25px;
     width: inherit;
     align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    padding: 5px;
     
 }
 
@@ -72,5 +139,6 @@ button:hover {
 }
 
 .entrycontainer.selected {
-    color: rgba(255, 0, 0, 0.801);
+    font-size: 30px;
+    font-weight: 600;
 }

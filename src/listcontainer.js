@@ -1,8 +1,10 @@
 import {projectContainer} from './list.js';
+import {listcontent} from './listcontents';
 
 const listcontainer = (() => {
     const maincontainer = document.createElement("div");
     let listscontainer = document.createElement("div");
+    let lastSelected = null;
 
     const create = () => {
         displayAddButton();
@@ -38,7 +40,7 @@ const listcontainer = (() => {
         nameField.type = "text";
         nameField.className = "textinput";
         nameField.placeholder = "Put title here..."
-        nameField.maxLength = "20";
+        nameField.maxLength = "15";
 
         cancleButton.textContent = '\u2190';
         cancleButton.className = "cancelbutton";
@@ -85,11 +87,12 @@ const listcontainer = (() => {
         doneButton.textContent = "Done";
         doneButton.className = "donebutton"
         doneButton.addEventListener('click', function() {
+            lastSelected = container.parentNode.getAttribute('data-id');
             if (editName.value === "") {
                 alert("Name is empty");
             }
             else {
-                projectContainer.lists[container.parentNode.getAttribute('data-id')].setName(editName.value);
+                projectContainer.getList(container.parentNode.getAttribute('data-id')).setName(editName.value);
                 displayListContent();
             }
         }); 
@@ -98,6 +101,7 @@ const listcontainer = (() => {
         removeButton.className = "removebutton"
         removeButton.addEventListener('click',function() {
             projectContainer.removeList(container.parentNode.getAttribute('data-id'));
+            lastSelected = null;
             displayListContent();
         });
         
@@ -122,8 +126,8 @@ const listcontainer = (() => {
 
         editButton.textContent = "Edit"
         editButton.className = "editbutton"
-        editButton.addEventListener('click', function() {
-            entry.replaceChild(displayListEdit(text), content);   
+        editButton.addEventListener('click', function() {     
+            entry.replaceChild(displayListEdit(text), content);
         });
         
         entry.setAttribute("data-id", key);
@@ -133,6 +137,8 @@ const listcontainer = (() => {
             if (selectedExists) {
                 selectedExists.classList.remove("selected");
             }
+            listcontent.updateSelected(entry.getAttribute("data-id"));
+            lastSelected = entry.getAttribute("data-id");
             entry.classList.add("selected");
         });
 
@@ -144,8 +150,13 @@ const listcontainer = (() => {
 
     const displayListContent = () => {
         clearListsContainer();
-        for(let i = 0; i < projectContainer.lists.length; i++) {
-            listscontainer.appendChild(displayListEntry(i, projectContainer.lists[i].getName()));
+        for(let i = 0; i < projectContainer.getAmountOfLists(); i++) {
+            listscontainer.appendChild(displayListEntry(i, projectContainer.getList(i).getName()));
+        }
+        
+        if (lastSelected) {
+            const selected = document.querySelector('[data-id = "'+lastSelected+'"]');
+            selected.classList.add("selected");
         }
     };
 
