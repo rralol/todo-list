@@ -11,6 +11,9 @@ const listcontainer = (() => {
         maincontainer.id = "listmain";
         listscontainer.id = "listcontainer";
         maincontainer.appendChild(listscontainer);
+        if(projectContainer.loadFromLocalStorage()){
+            displayListContent();
+        }
         return maincontainer;
     };
 
